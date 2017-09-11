@@ -25,6 +25,7 @@
 #if defined(WINDOWS)  
 #include "xos/platform/platform_windows.c"
 #else /*/ defined(WINDOWS)  /*/
+#include "xos/platform/platform_unix.c"
 #endif /*/ defined(WINDOWS)  /*/
 
 #if defined(__cplusplus)

@@ -21,6 +21,12 @@
 #include "xos/platform/platform.hpp"
 #include "xos/platform/platform.c"
 
+#if defined(WINDOWS)
+#include "xos/platform/platform_windows.cpp"
+#else // defined(WINDOWS)
+#include "xos/platform/platform_unix.cpp"
+#endif // defined(WINDOWS)
+
 namespace xos {
 
 } // namespace xos 

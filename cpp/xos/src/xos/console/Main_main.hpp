@@ -13,24 +13,23 @@
 /// or otherwise) arising in any way out of the use of this software, 
 /// even if advised of the possibility of such damage.
 ///
-///   File: platform.hpp
+///   File: Main_main.hpp
 ///
 /// Author: $author$
-///   Date: 7/23/2017
+///   Date: 9/3/2017
 ///////////////////////////////////////////////////////////////////////
-#ifndef _XOS_PLATFORM_PLATFORM_HPP
-#define _XOS_PLATFORM_PLATFORM_HPP
+#ifndef _XOS_CONSOLE_MAIN_MAIN_HPP
+#define _XOS_CONSOLE_MAIN_MAIN_HPP
 
-#include "xos/platform/platform.h"
-
-#if defined(WINDOWS)
-#include "xos/platform/platform_windows.hpp"
-#else // defined(WINDOWS)
-#include "xos/platform/platform_unix.hpp"
-#endif // defined(WINDOWS)
+#include "xos/platform/platform.hpp"
 
 namespace xos {
+namespace console {
 
+} // namespace console 
 } // namespace xos 
 
-#endif // _XOS_PLATFORM_PLATFORM_HPP 
+#endif // _XOS_CONSOLE_MAIN_MAIN_HPP 
+
+        
+
