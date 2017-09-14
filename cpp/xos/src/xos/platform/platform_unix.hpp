@@ -25,9 +25,9 @@
 
 namespace xos {
 namespace platform {
+
 namespace microsoft {
 namespace windows {
-
 ///////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////
 class _EXPORT_CLASS Handle {
@@ -46,6 +46,10 @@ public:
         BOOL success = FALSE;
         return success;
     }
+    virtual BOOL ReleaseSemaphore(LONG lReleaseCount, LPLONG lpPreviousCount) {
+        BOOL success = FALSE;
+        return success;
+    }
     virtual DWORD WaitForSingleObject(DWORD dwMilliseconds) {
         DWORD dwStatus = WAIT_FAILED;
         return dwStatus;
@@ -57,9 +61,19 @@ public:
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
 };
-
 } // namespace windows
 } // namespace microsoft
+
+namespace apple {
+namespace mach {
+} // namespace mach
+namespace osx {
+} // namespace osx
+} // namespace apple
+
+namespace posix {
+} // namespace posix
+
 } // namespace platform
 } // namespace xos
 

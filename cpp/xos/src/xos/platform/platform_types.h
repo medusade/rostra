@@ -223,6 +223,9 @@ typedef PBYTE LPBYTE;
 typedef WORD* PWORD;
 typedef PWORD LPWORD;
 
+typedef DWORD* PDWORD;
+typedef PDWORD LPDWORD;
+
 typedef SHORT* PSHORT;
 typedef PSHORT LPSHORT;
 

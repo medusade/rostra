@@ -92,6 +92,7 @@
 /*/
 #if defined(APPLE) && defined(MACH)
 #include "TargetConditionals.h"
+#include "Availability.h"
 #if defined(PLATFORM_DEFINED_DEBUG)
 #error defined APPLEOS
 #endif /*/ defined(PLATFORM_DEFINED_DEBUG) /*/

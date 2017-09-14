@@ -30,6 +30,150 @@
 #include "xos/platform/platform_types.h"
 #include "xos/platform/platform_api.h"
 
+#if defined(MACOSX)
+#if !defined(__MAC_OS_X_VERSION_MAX_ALLOWED_NO_POSIX_SEM)
+#define __MAC_OS_X_VERSION_MAX_ALLOWED_NO_POSIX_SEM __MAC_10_9
+#endif /*/ !defined(__MAC_OS_X_VERSION_MAX_ALLOWED_NO_POSIX_SEM) /*/
+#else /*/ defined(MACOSX) /*/
+#endif /*/ defined(MACOSX) /*/
+
+#if defined(_POSIX_TIMEOUTS) && (_POSIX_TIMEOUTS >=0 )
+#if !defined(HAS_POSIX_TIMEOUTS)
+#define HAS_POSIX_TIMEOUTS
+#else /*/ !defined(HAS_POSIX_TIMEOUTS) /*/
+#endif /*/ !defined(HAS_POSIX_TIMEOUTS) /*/
+#else /*/ defined(_POSIX_TIMEOUTS) && (_POSIX_TIMEOUTS >=0 ) /*/
+#endif /*/ defined(_POSIX_TIMEOUTS) && (_POSIX_TIMEOUTS >=0 ) /*/
+
+#if !defined(HAS_POSIX_TIMEOUTS)
+#if !defined(CLOCK_REALTIME)
+/*/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////*/
+#define CLOCK_REALTIME 0
+#define clockid_t int
+/*/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////*/
+#if defined(__cplusplus)
+extern "C" {
+#endif /*/ defined(__cplusplus)  /*/
+
+int clock_gettime(clockid_t clk_id, struct timespec *res);
+
+#if defined(__cplusplus)
+} /*/ extern "C" /*/
+#endif /*/ defined(__cplusplus)  /*/
+/*/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////*/
+#else /*/ !defined(CLOCK_REALTIME) /*/
+#endif /*/ !defined(CLOCK_REALTIME) /*/
+#else /*/ !defined(HAS_POSIX_TIMEOUTS) /*/
+#endif /*/ !defined(HAS_POSIX_TIMEOUTS) /*/
+
+#if defined(MACOSX)
+#if (__MAC_OS_X_VERSION_MAX_ALLOWED <= __MAC_OS_X_VERSION_MAX_ALLOWED_NO_POSIX_SEM)
+#include <semaphore.h>
+/*/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////*/
+#define sem_t posix_sem_t
+#define sem_close posix_sem_close
+#define sem_destroy posix_sem_destroy
+#define sem_getvalue posix_sem_getvalue
+#define sem_init posix_sem_init
+#define sem_open posix_sem_open
+#define sem_post posix_sem_post
+#define sem_unlink posix_sem_unlink
+#define sem_wait posix_sem_wait
+#define sem_trywait posix_sem_trywait
+#define sem_timedwait posix_sem_timedwait
+#define semctl posix_semctl
+#define semget posix_semget
+#define semop posix_semop
+typedef void* sem_t;
+/*/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////*/
+#if defined(__cplusplus)
+extern "C" {
+#endif /*/ defined(__cplusplus)  /*/
+
+int sem_close(sem_t *sem);
+int sem_destroy(sem_t *sem);
+int sem_getvalue(sem_t *sem, int *sval);
+int sem_init(sem_t *sem, int pshared, unsigned int value);
+sem_t *sem_open(const char *name, int oflag, ...);
+int sem_post(sem_t *sem);
+int sem_trywait(sem_t *sem);
+int sem_unlink(const char *name);
+int sem_wait(sem_t *sem);
+
+int semctl(int semid, int semnum, int cmd, ...);
+int semget(key_t key, int nsems, int semflg);
+int semop(int semid, struct sembuf *sops, size_t nsops);
+
+#if defined(__cplusplus)
+} /*/ extern "C" /*/
+#endif /*/ defined(__cplusplus)  /*/
+/*/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////*/
+#else /*/ (__MAC_OS_X_VERSION_MAX_ALLOWED <= __MAC_OS_X_VERSION_MAX_ALLOWED_NO_POSIX_SEM) /*/
+#endif /*/ (__MAC_OS_X_VERSION_MAX_ALLOWED <= __MAC_OS_X_VERSION_MAX_ALLOWED_NO_POSIX_SEM) /*/
+#else /*/ defined(MACOSX) /*/
+#endif /*/ defined(MACOSX) /*/
+
+#if !defined(HAS_POSIX_TIMEOUTS)
+#if !defined(SEM_HAS_TIMEDWAIT)
+/*/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////*/
+#if defined(__cplusplus)
+extern "C" {
+#endif /*/ defined(__cplusplus)  /*/
+
+int sem_timedwait(sem_t *sem, const struct timespec *abs_timeout);
+
+#if defined(__cplusplus)
+} /*/ extern "C" /*/
+#endif /*/ defined(__cplusplus)  /*/
+#define SEM_HAS_TIMEDWAIT
+#else /*/ !defined(SEM_HAS_TIMEDWAIT) /*/
+#endif /*/ !defined(SEM_HAS_TIMEDWAIT) /*/
+#else /*/ !defined(HAS_POSIX_TIMEOUTS) /*/
+#endif /*/ !defined(HAS_POSIX_TIMEOUTS) /*/
+
+#if !defined(HAS_POSIX_TIMEOUTS)
+#if !defined(PTHREAD_HAS_TRYJOIN)
+/*/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////*/
+#if defined(__cplusplus)
+extern "C" {
+#endif /*/ defined(__cplusplus)  /*/
+
+int pthread_tryjoin_np(pthread_t thread, void **retval);
+
+#if defined(__cplusplus)
+} /*/ extern "C" /*/
+#endif /*/ defined(__cplusplus)  /*/
+#define PTHREAD_HAS_TRYJOIN
+#else /*/ !defined(PTHREAD_HAS_TRYJOIN) /*/
+#endif /*/ !defined(PTHREAD_HAS_TRYJOIN) /*/
+
+#if !defined(PTHREAD_HAS_TIMEDJOIN)
+/*/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////*/
+#if defined(__cplusplus)
+extern "C" {
+#endif /*/ defined(__cplusplus)  /*/
+
+int pthread_timedjoin_np
+(pthread_t thread, void **retval, const struct timespec *abstime);
+
+#if defined(__cplusplus)
+} /*/ extern "C" /*/
+#endif /*/ defined(__cplusplus)  /*/
+#define PTHREAD_HAS_TIMEDJOIN
+#else /*/ !defined(PTHREAD_HAS_TIMEDJOIN) /*/
+#endif /*/ !defined(PTHREAD_HAS_TIMEDJOIN) /*/
+#else /*/ !defined(HAS_POSIX_TIMEOUTS) /*/
+#endif /*/ !defined(HAS_POSIX_TIMEOUTS) /*/
+
 #if !defined(WINDOWS)
 /*/////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////*/
@@ -39,11 +183,20 @@ enum {
     WAIT_ABANDONED = 0x80,
     WAIT_TIMEOUT   = 0x102
 };
+enum {
+    CREATE_SUSPENDED = 0x00000004,
+    STACK_SIZE_PARAM_IS_A_RESERVATION = 0x00010000
+};
 typedef struct _SECURITY_ATTRIBUTES {
   DWORD  nLength;
   LPVOID lpSecurityDescriptor;
   BOOL   bInheritHandle;
 } SECURITY_ATTRIBUTES, *PSECURITY_ATTRIBUTES, *LPSECURITY_ATTRIBUTES;
+
+typedef DWORD WINAPI ThreadProc(
+  _In_ LPVOID lpParameter
+);
+typedef ThreadProc *PTHREAD_START_ROUTINE, *LPTHREAD_START_ROUTINE;
 
 /*/////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////*/
@@ -58,6 +211,33 @@ HANDLE WINAPI CreateMutex(
 );
 BOOL WINAPI ReleaseMutex(
   _In_ HANDLE hMutex
+);
+HANDLE WINAPI CreateSemaphore(
+  _In_opt_ LPSECURITY_ATTRIBUTES lpSemaphoreAttributes,
+  _In_     LONG                  lInitialCount,
+  _In_     LONG                  lMaximumCount,
+  _In_opt_ LPCTSTR               lpName
+);
+BOOL WINAPI ReleaseSemaphore(
+  _In_      HANDLE hSemaphore,
+  _In_      LONG   lReleaseCount,
+  _Out_opt_ LPLONG lpPreviousCount
+);
+HANDLE WINAPI CreateThread(
+  _In_opt_  LPSECURITY_ATTRIBUTES  lpThreadAttributes,
+  _In_      SIZE_T                 dwStackSize,
+  _In_      LPTHREAD_START_ROUTINE lpStartAddress,
+  _In_opt_  LPVOID                 lpParameter,
+  _In_      DWORD                  dwCreationFlags,
+  _Out_opt_ LPDWORD                lpThreadId
+);
+uintptr_t _beginthreadex(
+   void *security,
+   unsigned stack_size,
+   unsigned ( __stdcall *start_address )( void * ),
+   void *arglist,
+   unsigned initflag,
+   unsigned *thrdaddr
 );
 DWORD WINAPI WaitForSingleObject(
   _In_ HANDLE hHandle,
@@ -83,4 +263,4 @@ namespace xos {
 } /*/ namespace xos /*/
 #endif /*/ defined(__cplusplus)  /*/
 
-#endif // _XOS_PLATFORM_PLATFORM_UNIX_H
+#endif /*/ _XOS_PLATFORM_PLATFORM_UNIX_H /*/

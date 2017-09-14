@@ -26,9 +26,9 @@
 #if (_MSC_VER < MSC_VER_14)
 #if !defined(va_copy)
 #define va_copy(_target, _source) (_target = _source)
-#endif // !defined(va_copy)
+#endif /*/ !defined(va_copy) /*/
 int vfscanf(FILE* file, const char* format, va_list va);
-#endif // (_MSC_VER < MSC_VER_14)
+#endif /*/ (_MSC_VER < MSC_VER_14) /*/
 
 #if defined(__cplusplus)
 namespace xos {
@@ -38,6 +38,4 @@ namespace xos {
 } /*/ namespace xos /*/
 #endif /*/ defined(__cplusplus)  /*/
 
-#endif // _XOS_PLATFORM_PLATFORM_WINDOWS_H 
-        
-
+#endif /*/ _XOS_PLATFORM_PLATFORM_WINDOWS_H /*/

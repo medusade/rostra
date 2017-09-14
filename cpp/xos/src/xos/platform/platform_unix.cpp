@@ -27,6 +27,22 @@ namespace platform {
 } // namespace xos 
 
 #if !defined(WINDOWS)
+#if defined(MACOSX)
+///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+int clock_gettime(clockid_t clk_id, struct timespec *res) {
+    if ((res)) {
+        memset(res, 0, sizeof(struct timespec));
+        return 0;
+    }
+    return 1;
+}
+#else // defined(MACOSX)
+#endif // defined(MACOSX)
+#else // !defined(WINDOWS)
+#endif // !defined(WINDOWS)
+
+#if !defined(WINDOWS)
 ///////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////
 BOOL WINAPI CloseHandle(
@@ -54,6 +70,20 @@ BOOL WINAPI ReleaseMutex(
 }
 ///////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////
+BOOL WINAPI ReleaseSemaphore(
+  _In_      HANDLE hSemaphore,
+  _In_      LONG   lReleaseCount,
+  _Out_opt_ LPLONG lpPreviousCount
+) {
+    ::xos::platform::microsoft::windows::Handle* handle = 0;
+    if ((handle = ((::xos::platform::microsoft::windows::Handle*)hSemaphore))) {
+        BOOL success = handle->ReleaseSemaphore(lReleaseCount, lpPreviousCount);
+        return success;
+    }
+    return FALSE;
+}
+///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
 DWORD WINAPI WaitForSingleObject(
   _In_ HANDLE hHandle,
   _In_ DWORD  dwMilliseconds
@@ -71,4 +101,5 @@ DWORD WINAPI GetLastError(void) {
     DWORD dwLastError = 1;
     return dwLastError;
 }
+#else // !defined(WINDOWS)
 #endif // !defined(WINDOWS)
