@@ -101,5 +101,21 @@ DWORD WINAPI GetLastError(void) {
     DWORD dwLastError = 1;
     return dwLastError;
 }
+
+int _fileno(
+   FILE *stream
+) {
+    return ::fileno(stream);
+}
+int _setmode (
+   int fd,
+   int mode
+) {
+    if (0 <= (fd)) {
+        return 0;
+    }
+    return -1;
+}
+
 #else // !defined(WINDOWS)
 #endif // !defined(WINDOWS)

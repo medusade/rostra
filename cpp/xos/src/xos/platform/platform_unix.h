@@ -178,6 +178,22 @@ int pthread_timedjoin_np
 /*/////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////*/
 enum {
+_O_RDONLY     = 0,
+_O_WRONLY     = 1,
+_O_RDWR       = 2,
+_O_APPEND     = 0x0008,
+_O_RANDOM     = 0x0010,
+_O_SEQUENTIAL = 0x0020,
+_O_TEMPORARY  = 0x0040,
+_O_NOINHERIT  = 0x0080,
+_O_CREAT      = 0x0100,
+_O_TRUNC      = 0x0200,
+_O_EXCL       = 0x0400,
+_O_TEXT       = 0x4000,
+_O_BINARY     = 0x8000,
+_O_RAW        = _O_BINARY,
+};
+enum {
     WAIT_FAILED    = -1,
     WAIT_OBJECT_0  = 0,
     WAIT_ABANDONED = 0x80,
@@ -247,6 +263,14 @@ BOOL WINAPI CloseHandle(
   _In_ HANDLE hObject
 );
 DWORD WINAPI GetLastError(void);
+
+int _fileno(
+   FILE *stream
+);
+int _setmode (
+   int fd,
+   int mode
+);
 
 #if defined(__cplusplus)
 } /*/ extern "C" /*/
