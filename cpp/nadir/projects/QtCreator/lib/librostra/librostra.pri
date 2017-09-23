@@ -33,9 +33,11 @@ $${rostra_DEFINES} \
 ########################################################################
 # rostra
 librostra_HEADERS += \
+$${XOS_ROSTRA_SRC}/xos/platform/platform.hpp \
 $${ROSTRA_SRC}/xos/base/base.hpp \
 
 librostra_SOURCES += \
+$${XOS_ROSTRA_SRC}/xos/platform/platform.cpp \
 $${ROSTRA_SRC}/xos/base/base.cpp \
 
 ########################################################################
