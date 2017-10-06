@@ -330,6 +330,39 @@ typedef char char_t;
 #define CCHARS_NULL ((const char*)0)
 #define CWCHARS_NULL ((const wchar_t*)0)
 #define CTCHARS_NULL ((const tchar_t*)0)
+
+#define NULL_BYTE 0
+#define NULL_CHAR 0
+#define NULL_TCHAR 0
+#define NULL_WCHAR 0
+
+#define NULL_POINTER_VALUE ((void*)(0))
+#define NULL_POINTER NULL_POINTER_VALUE
+
+#define INVALID_HANDLE INVALID_HANDLE_VALUE
+#define NULL_HANDLE NULL_HANDLE_VALUE
+#define NULL_ATOM NULL_ATOM_VALUE
+
+#define V_HANDLE INT
+#define V_INVALID_HANDLE_VALUE ((V_HANDLE)-1)
+#define V_NULL_HANDLE_VALUE ((V_HANDLE)0)
+
+#define V_ATOM INT
+#define V_NULL_ATOM_VALUE ((V_ATOM)0)
+
+#if defined(NO_TEMPLATE_PARAMETER_CAST)
+/*/
+// Can't cast template parameters
+/*/
+#define V_INVALID_HANDLE -1
+#define V_NULL_HANDLE 0
+#define V_NULL_ATOM 0
+#else /*/ defined(NO_TEMPLATE_PARAMETER_CAST) /*/
+#define V_INVALID_HANDLE V_INVALID_HANDLE_VALUE
+#define V_NULL_HANDLE V_NULL_HANDLE_VALUE
+#define V_NULL_ATOM V_NULL_ATOM_VALUE
+#endif /*/ defined(NO_TEMPLATE_PARAMETER_CAST) /*/
+
 /*/
 /// ...
 /// Generic
