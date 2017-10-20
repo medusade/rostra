@@ -88,6 +88,12 @@
 #define PLATFORM_EXPORT
 #define PLATFORM_IMPORT
 
+#if defined(__stdcall)
+#define PLATFORM___stdcall __stdcall
+#undef __stdcall
+#endif /*/ defined(__stdcall) /*/
+#define __stdcall
+
 #if defined(unix)
 #define PLATFORM_unix unix
 #undef unix
@@ -188,20 +194,19 @@
 /// C++
 /// ...
 /*/
+#define EXPORT_FUNCTION PLATFORM_EXPORT
 #define EXPORT_CLASS PLATFORM_EXPORT
 #define INTERFACE_CLASS PLATFORM_EXPORT
-
-#if !defined(NO_IMPLEMENT_CLASS)
 #define IMPLEMENT_CLASS PLATFORM_EXPORT
-#endif /*/ !defined(NO_IMPLEMENT_CLASS) /*/
-
 #define INSTANCE_CLASS PLATFORM_EXPORT
 
+#define _EXPORT_FUNCTION PLATFORM_EXPORT
 #define _EXPORT_CLASS PLATFORM_EXPORT
 #define _INTERFACE_CLASS PLATFORM_EXPORT
 #define _IMPLEMENT_CLASS PLATFORM_EXPORT
 #define _INSTANCE_CLASS PLATFORM_EXPORT
 
+#define c_EXPORT_FUNCTION PLATFORM_EXPORT
 #define c_EXPORT_CLASS PLATFORM_EXPORT
 #define c_INTERFACE_CLASS PLATFORM_EXPORT
 #define c_IMPLEMENT_CLASS PLATFORM_EXPORT
