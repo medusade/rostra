@@ -141,7 +141,7 @@
 // Microsoft C/C++
 // ...
 /*/
-#define PACKED_STRUCT
+#define PLATFORM_PACKED
 /*/
 // ...
 // Microsoft C/C++
@@ -152,7 +152,7 @@
 // Gnu C/C++
 // ...
 /*/
-#define PACKED_STRUCT __attribute__ ((packed))
+#define PLATFORM_PACKED __attribute__ ((packed))
 /*/
 // ...
 // Gnu C/C++
@@ -179,6 +179,10 @@
 
 #define c_EXPORT PLATFORM_EXPORT
 #define c_IMPORT PLATFORM_IMPORT
+
+#define PACKED_STRUCT PLATFORM_PACKED
+#define _PACKED_STRUCT PLATFORM_PACKED
+#define c_PACKED_STRUCT PLATFORM_PACKED
 
 #if defined(DELETE)
 #define PLATFORM_DELETE DELETE
