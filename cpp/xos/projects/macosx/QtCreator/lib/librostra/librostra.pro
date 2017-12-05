@@ -20,6 +20,7 @@
 #
 # QtCreator .pro file for rostra library librostra
 ########################################################################
+include(../../../../../build/QtCreator/rostra.pri)
 include(../../../../QtCreator/rostra.pri)
 include(../../rostra.pri)
 include(../../../../QtCreator/lib/librostra/librostra.pri)
