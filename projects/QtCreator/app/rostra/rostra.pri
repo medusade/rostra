@@ -13,87 +13,62 @@
 # or otherwise) arising in any way out of the use of this software,
 # even if advised of the possibility of such damage.
 #
-#   File: Makefile
+#   File: rostra.pri
 #
 # Author: $author$
 #   Date: 3/22/2018
 #
-# generic Gcc Makefile for rostra Library librostra
+# QtCreator .pri file for rostra executable rostra
 ########################################################################
 
+########################################################################
+# rostra
 
+# rostra_exe TARGET
 #
-# target
+rostra_exe_TARGET = rostra
+
+# rostra_exe INCLUDEPATH
 #
-librostra_LIBTARGET = librostra.${LIBEXT}
+rostra_exe_INCLUDEPATH += \
+$${rostra_INCLUDEPATH} \
+
+# rostra_exe DEFINES
+#
+rostra_exe_DEFINES += \
+$${rostra_DEFINES} \
 
 ########################################################################
+# rostra_exe OBJECTIVE_HEADERS
+#
+#rostra_exe_OBJECTIVE_HEADERS += \
+#$${ROSTRA_SRC}/rostra/base/Base.hh \
 
+# rostra_exe OBJECTIVE_SOURCES
 #
-# user c++ flags
-#
-librostra_USRCXXFLAGS += \
-${rostra_USRCXXFLAGS} \
-
-#
-# user defines
-#
-librostra_USRDEFINES += \
-${rostra_USRDEFINES} \
-
-#
-# user includes
-#
-librostra_USRINCLUDES += \
-${rostra_USRINCLUDES} \
-
-#
-# user libdirs
-#
-librostra_USRLIBDIRS += \
-${rostra_USRLIBDIRS} \
+#rostra_exe_OBJECTIVE_SOURCES += \
+#$${ROSTRA_SRC}/rostra/base/Base.mm \
 
 ########################################################################
+# rostra_exe HEADERS
+#
+rostra_exe_HEADERS += \
+$${ROSTRA_SRC}/xos/console/Main_main.hpp \
 
+# rostra_exe SOURCES
 #
-# Library .c sources
-#
-#librostra_LIB_C_SOURCES += \
-#${ROSTRA_SRC}/rostra/base/Base.c \
-
-#
-# Library .cc sources
-#
-#librostra_LIB_CC_SOURCES += \
-#${ROSTRA_SRC}/rostra/base/Base.cc \
-
-#
-# Library .cxx sources
-#
-#librostra_LIB_CXX_SOURCES += \
-#${ROSTRA_SRC}/rostra/base/Base.cxx \
-
-#
-# Library .cpp sources
-#
-librostra_LIB_CPP_SOURCES += \
-${ROSTRA_SRC}/xos/platform/platform.cpp \
-
-#
-# Library .m sources
-#
-#librostra_LIB_M_SOURCES += \
-#${ROSTRA_SRC}/rostra/base/Base.m \
-
-#
-# Library .mm sources
-#
-#librostra_LIB_MM_SOURCES += \
-#${ROSTRA_SRC}/rostra/base/Base.mm \
-
+rostra_exe_SOURCES += \
+$${ROSTRA_SRC}/xos/console/Main_main.cpp \
 
 ########################################################################
+# rostra_exe FRAMEWORKS
+#
+rostra_exe_FRAMEWORKS += \
+$${rostra_FRAMEWORKS} \
 
-
+# rostra_exe LIBS
+#
+rostra_exe_LIBS += \
+$${rostra_LIBS} \
 
 

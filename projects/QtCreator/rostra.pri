@@ -13,56 +13,58 @@
 # or otherwise) arising in any way out of the use of this software,
 # even if advised of the possibility of such damage.
 #
-#   File: Makefile
+#   File: rostra.pri
 #
 # Author: $author$
 #   Date: 3/22/2018
 #
-# generic Gcc Makefile for rostra
+# QtCreator .pri file for rostra
 ########################################################################
 
-OTHER_VERSION_PKG = ${PKG}
-OTHER_DEPENDS_PKG = ${PKG}/..
-OTHER_THIRDPARTY_NAME = thirdparty
-OTHER_THIRDPARTY_VERSION_PKG = ${OTHER_VERSION_PKG}/${OTHER_THIRDPARTY_NAME}
+OTHER_PKG = ../../../../../../..
+OTHER_PRJ = ../../../../../..
+OTHER_BLD = ..
 
-ROSTRA_PKG = ${PKG}
-ROSTRA_SRC = ${ROSTRA_PKG}/${SRC}
-ROSTRA_BLD = ${ROSTRA_PKG}/${BLD}/${BUILD_TYPE}
-ROSTRA_LIB = ${ROSTRA_BLD}/lib
-ROSTRA_BIN = ${ROSTRA_BLD}/bin
-
+THIRDPARTY_NAME = thirdparty
+THIRDPARTY_PKG = $${OTHER_PKG}/$${THIRDPARTY_NAME}
+THIRDPARTY_PRJ = $${OTHER_PRJ}/$${THIRDPARTY_NAME}
+THIRDPARTY_SRC = $${OTHER_PRJ}/src/$${THIRDPARTY_NAME}
 
 ########################################################################
 # rostra
+FRAMEWORK_NAME = rostra
 
-# rostra USRDEFINES
-#
-rostra_USRDEFINES += \
-${build_rostra_USRDEFINES} \
+ROSTRA_PKG = ../../../../..
+ROSTRA_BLD = ../..
 
-# rostra USRINCLUDES
-#
-rostra_USRINCLUDES += \
--I${ROSTRA_SRC} \
-${build_rostra_USRINCLUDES} \
+ROSTRA_PRJ = $${ROSTRA_PKG}
+ROSTRA_BIN = $${ROSTRA_BLD}/bin
+ROSTRA_LIB = $${ROSTRA_BLD}/lib
+ROSTRA_SRC = $${ROSTRA_PKG}/cpp/xos/src
 
-# rostra USRCXXFLAGS
+# rostra BUILD_CONFIG
 #
-rostra_USRCXXFLAGS += \
-${build_rostra_USRCXXFLAGS} \
+CONFIG(debug, debug|release) {
+BUILD_CONFIG = Debug
+rostra_DEFINES += DEBUG_BUILD
+} else {
+BUILD_CONFIG = Release
+rostra_DEFINES += RELEASE_BUILD
+}
 
-# rostra USRLIBDIRS
+# rostra INCLUDEPATH
 #
-rostra_USRLIBDIRS += \
--L${ROSTRA_LIB} \
-${build_rostra_USRLIBDIRS} \
+rostra_INCLUDEPATH += \
+$${ROSTRA_SRC} \
+$${build_rostra_INCLUDEPATH} \
+
+# rostra DEFINES
+#
+rostra_DEFINES += \
+$${build_rostra_DEFINES} \
 
 # rostra LIBS
 #
 rostra_LIBS += \
--lrostra \
-${build_rostra_LIBS} \
-
-########################################################################
-
+-L$${ROSTRA_LIB}/lib$${FRAMEWORK_NAME} \
+-l$${FRAMEWORK_NAME} \

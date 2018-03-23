@@ -13,30 +13,29 @@
 # or otherwise) arising in any way out of the use of this software,
 # even if advised of the possibility of such damage.
 #
-#   File: Makefile
+#   File: rostra.pri
 #
 # Author: $author$
 #   Date: 3/22/2018
 #
-# Os Gcc Makefile for rostra subdurs
+# build QtCreator .pri file for rostra
 ########################################################################
 
-PKG = ../../../..
+########################################################################
+# rostra
 
-MAK = projects/Makefile/Gcc
-PRJ = projects/os/Makefile/Gcc
-SRC = src
-
-include $(PKG)/$(MAK)/Makedefines
-
+# build rostra INCLUDEPATH
 #
-# Source subdirs
-#
-#SRC_DIRS = \
-#$(PKG)/$(PRJ)/somedir \
-#
-SRC_DIRS = \
-$(PKG)/$(PRJ)/lib/librostra \
-$(PKG)/$(PRJ)/app/rostra \
+build_rostra_INCLUDEPATH += \
 
-include $(PKG)/$(MAK)/Makedirs
+
+# build rostra DEFINES
+#
+build_rostra_DEFINES += \
+
+
+# build rostra LIBS
+#
+build_rostra_LIBS += \
+
+

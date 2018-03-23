@@ -13,30 +13,56 @@
 # or otherwise) arising in any way out of the use of this software,
 # even if advised of the possibility of such damage.
 #
-#   File: Makefile
+#   File: librostra.pro
 #
 # Author: $author$
 #   Date: 3/22/2018
 #
-# Os Gcc Makefile for rostra subdurs
+# QtCreator .pro file for rostra library librostra
+########################################################################
+include(../../../../../build/QtCreator/rostra.pri)
+include(../../../../QtCreator/rostra.pri)
+include(../../rostra.pri)
+include(../../../../QtCreator/lib/librostra/librostra.pri)
+
+TARGET = $${librostra_TARGET}
+TEMPLATE = $${librostra_TEMPLATE}
+CONFIG += $${librostra_CONFIG}
+
+########################################################################
+# INCLUDEPATH
+#
+INCLUDEPATH += \
+$${librostra_INCLUDEPATH} \
+
+# DEFINES
+# 
+DEFINES += \
+$${librostra_DEFINES} \
+
+########################################################################
+# OBJECTIVE_HEADERS
+#
+OBJECTIVE_HEADERS += \
+$${librostra_OBJECTIVE_HEADERS} \
+
+# OBJECTIVE_SOURCES
+#
+SOURCES += \
+$${librostra_OBJECTIVE_SOURCES} \
+
+########################################################################
+# HEADERS
+#
+HEADERS += \
+$${librostra_HEADERS} \
+
+# SOURCES
+#
+SOURCES += \
+$${librostra_SOURCES} \
+$${OBJECTIVE_SOURCES} \
+
 ########################################################################
 
-PKG = ../../../..
 
-MAK = projects/Makefile/Gcc
-PRJ = projects/os/Makefile/Gcc
-SRC = src
-
-include $(PKG)/$(MAK)/Makedefines
-
-#
-# Source subdirs
-#
-#SRC_DIRS = \
-#$(PKG)/$(PRJ)/somedir \
-#
-SRC_DIRS = \
-$(PKG)/$(PRJ)/lib/librostra \
-$(PKG)/$(PRJ)/app/rostra \
-
-include $(PKG)/$(MAK)/Makedirs

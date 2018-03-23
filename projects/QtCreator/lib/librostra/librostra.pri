@@ -13,87 +13,56 @@
 # or otherwise) arising in any way out of the use of this software,
 # even if advised of the possibility of such damage.
 #
-#   File: Makefile
+#   File: librostra.pri
 #
 # Author: $author$
 #   Date: 3/22/2018
 #
-# generic Gcc Makefile for rostra Library librostra
+# QtCreator .pri file for rostra library librostra
 ########################################################################
 
+########################################################################
+# librostra
 
+# librostra TARGET
 #
-# target
+librostra_TARGET = rostra
+librostra_TEMPLATE = lib
+librostra_CONFIG += staticlib
+
+# librostra INCLUDEPATH
 #
-librostra_LIBTARGET = librostra.${LIBEXT}
+librostra_INCLUDEPATH += \
+$${rostra_INCLUDEPATH} \
+
+# librostra DEFINES
+#
+librostra_DEFINES += \
+$${rostra_DEFINES} \
 
 ########################################################################
+# librostra OBJECTIVE_HEADERS
+#
+#librostra_OBJECTIVE_HEADERS += \
+#$${ROSTRA_SRC}/rostra/base/Base.hh \
 
+# librostra OBJECTIVE_SOURCES
 #
-# user c++ flags
-#
-librostra_USRCXXFLAGS += \
-${rostra_USRCXXFLAGS} \
-
-#
-# user defines
-#
-librostra_USRDEFINES += \
-${rostra_USRDEFINES} \
-
-#
-# user includes
-#
-librostra_USRINCLUDES += \
-${rostra_USRINCLUDES} \
-
-#
-# user libdirs
-#
-librostra_USRLIBDIRS += \
-${rostra_USRLIBDIRS} \
+#librostra_OBJECTIVE_SOURCES += \
+#$${ROSTRA_SRC}/rostra/base/Base.mm \
 
 ########################################################################
+# librostra HEADERS
+#
+librostra_HEADERS += \
+$${ROSTRA_SRC}/xos/platform/platform.hpp \
 
+# librostra SOURCES
 #
-# Library .c sources
-#
-#librostra_LIB_C_SOURCES += \
-#${ROSTRA_SRC}/rostra/base/Base.c \
-
-#
-# Library .cc sources
-#
-#librostra_LIB_CC_SOURCES += \
-#${ROSTRA_SRC}/rostra/base/Base.cc \
-
-#
-# Library .cxx sources
-#
-#librostra_LIB_CXX_SOURCES += \
-#${ROSTRA_SRC}/rostra/base/Base.cxx \
-
-#
-# Library .cpp sources
-#
-librostra_LIB_CPP_SOURCES += \
-${ROSTRA_SRC}/xos/platform/platform.cpp \
-
-#
-# Library .m sources
-#
-#librostra_LIB_M_SOURCES += \
-#${ROSTRA_SRC}/rostra/base/Base.m \
-
-#
-# Library .mm sources
-#
-#librostra_LIB_MM_SOURCES += \
-#${ROSTRA_SRC}/rostra/base/Base.mm \
-
+librostra_SOURCES += \
+$${ROSTRA_SRC}/xos/platform/platform.cpp \
 
 ########################################################################
-
 
 
 

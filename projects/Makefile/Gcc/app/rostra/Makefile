@@ -18,82 +18,87 @@
 # Author: $author$
 #   Date: 3/22/2018
 #
-# generic Gcc Makefile for rostra Library librostra
+# generic Gcc Makefile for rostra Executable rostra
 ########################################################################
 
 
 #
 # target
 #
-librostra_LIBTARGET = librostra.${LIBEXT}
+rostra_exe_EXETARGET = rostra
 
 ########################################################################
 
 #
 # user c++ flags
 #
-librostra_USRCXXFLAGS += \
+rostra_exe_USRCXXFLAGS += \
 ${rostra_USRCXXFLAGS} \
 
 #
 # user defines
 #
-librostra_USRDEFINES += \
+rostra_exe_USRDEFINES += \
 ${rostra_USRDEFINES} \
 
 #
 # user includes
 #
-librostra_USRINCLUDES += \
+rostra_exe_USRINCLUDES += \
 ${rostra_USRINCLUDES} \
 
 #
 # user libdirs
 #
-librostra_USRLIBDIRS += \
+rostra_exe_USRLIBDIRS += \
 ${rostra_USRLIBDIRS} \
 
 ########################################################################
 
 #
-# Library .c sources
+# Executable .c sources
 #
-#librostra_LIB_C_SOURCES += \
+#rostra_exe_EXE_C_SOURCES += \
 #${ROSTRA_SRC}/rostra/base/Base.c \
 
 #
-# Library .cc sources
+# Executable .cc sources
 #
-#librostra_LIB_CC_SOURCES += \
+#rostra_exe_EXE_CC_SOURCES += \
 #${ROSTRA_SRC}/rostra/base/Base.cc \
 
 #
-# Library .cxx sources
+# Executable .cxx sources
 #
-#librostra_LIB_CXX_SOURCES += \
+#rostra_exe_EXE_CXX_SOURCES += \
 #${ROSTRA_SRC}/rostra/base/Base.cxx \
 
 #
-# Library .cpp sources
+# Executable .cpp sources
 #
-librostra_LIB_CPP_SOURCES += \
-${ROSTRA_SRC}/xos/platform/platform.cpp \
+rostra_exe_EXE_CPP_SOURCES += \
+${ROSTRA_SRC}/xos/console/Main_main.cpp \
 
 #
-# Library .m sources
+# Executable .m sources
 #
-#librostra_LIB_M_SOURCES += \
+#rostra_exe_EXE_M_SOURCES += \
 #${ROSTRA_SRC}/rostra/base/Base.m \
 
 #
-# Library .mm sources
+# Executable .mm sources
 #
-#librostra_LIB_MM_SOURCES += \
+#rostra_exe_EXE_MM_SOURCES += \
 #${ROSTRA_SRC}/rostra/base/Base.mm \
 
 
 ########################################################################
 
+#
+# Executable libraries
+#
+rostra_exe_LIBS += \
+${rostra_LIBS}
 
 
 

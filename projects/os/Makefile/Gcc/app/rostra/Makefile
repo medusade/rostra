@@ -18,7 +18,7 @@
 # Author: $author$
 #   Date: 3/22/2018
 #
-# Os Gcc Makefile for rostra Library librostra
+# Os Gcc Makefile for rostra Executable rostra
 ########################################################################
 
 PKG = ../../../../../..
@@ -32,12 +32,12 @@ include $(PKG)/$(BMK)/Makedefines
 include $(PKG)/$(MAK)/Makedefines
 include $(PKG)/$(MAK)/Makefile
 include $(PKG)/$(BMK)/Makefile
-include $(PKG)/$(MAK)/lib/librostra/Makefile
+include $(PKG)/$(MAK)/app/rostra/Makefile
 
 #
 # target
 #
-LIBTARGET = ${librostra_LIBTARGET}
+EXETARGET = ${rostra_exe_EXETARGET}
 
 ########################################################################
 
@@ -45,98 +45,106 @@ LIBTARGET = ${librostra_LIBTARGET}
 # user defines
 #
 USRDEFINES += \
-${librostra_USRDEFINES}
+${rostra_exe_USRDEFINES}
 
 #
 # user includes
 #
 USRINCLUDES += \
-${librostra_USRINCLUDES}
+${rostra_exe_USRINCLUDES}
 
 #
 # user libdirs
 #
 USRLIBDIRS += \
-${librostra_USRLIBDIRS}
+${rostra_exe_USRLIBDIRS}
 
 #
 # user c++ flags
 #
 USRCXXFLAGS += \
-${librostra_USRCXXFLAGS}
+${rostra_exe_USRCXXFLAGS}
 
 #
 # user c flags
 #
 USRCFLAGS += \
-${librostra_USRCFLAGS}
+${rostra_exe_USRCFLAGS}
 
 #
 # user ld flags
 #
 USRLDFLAGS += \
-${librostra_USRLDFLAGS}
+${rostra_exe_USRLDFLAGS}
 
 ########################################################################
 
 #
-# Library C sources
+# Executable C sources
 #
-LIB_C_SOURCES += \
-${librostra_LIB_C_SOURCES}
+EXE_C_SOURCES += \
+${rostra_exe_EXE_C_SOURCES}
 
 #
-# Library C++ .cc sources
+# Executable C++ .cc sources
 #
-LIB_CC_SOURCES += \
-${librostra_LIB_CC_SOURCES}
+EXE_CC_SOURCES += \
+${rostra_exe_EXE_CC_SOURCES}
 
 #
-# Library C++ .cxx sources
+# Executable C++ .cxx sources
 #
-LIB_CXX_SOURCES += \
-${librostra_LIB_CXX_SOURCES}
+EXE_CXX_SOURCES += \
+${rostra_exe_EXE_CXX_SOURCES}
 
 #
-# Library C++ .cpp sources
+# Executable C++ .cpp sources
 #
-LIB_CPP_SOURCES += \
-${librostra_LIB_CPP_SOURCES}
+EXE_CPP_SOURCES += \
+${rostra_exe_EXE_CPP_SOURCES}
 
 #
-# Library Objective C .m sources
+# Executable Objective C .m sources
 #
-LIB_M_SOURCES += \
-${librostra_LIB_M_SOURCES}
+EXE_M_SOURCES += \
+${rostra_exe_EXE_M_SOURCES}
 
 #
-# Library Objective C++ .mm sources
+# Executable Objective C++ .mm sources
 #
-LIB_MM_SOURCES += \
-${librostra_LIB_MM_SOURCES}
+EXE_MM_SOURCES += \
+${rostra_exe_EXE_MM_SOURCES}
 
 ########################################################################
 
 #
-# Library depends
+# Executable libraries
 #
-#LIBDEP += \
+LIBS += \
+${rostra_exe_LIBS}
+
+########################################################################
+
+#
+# Executable depends
+#
+#EXEDEP += \
 #$(PKG)/$(BLD)/libsomelib \
 #
-LIBDEP += \
+EXEDEP += \
 
 #
-# Library depend dirs
+# Executable depend dirs
 #
-#LIBDEP_DIRS += \
+#EXEDEP_DIRS += \
 #../libsomelib
 #
-LIBDEP_DIRS += \
+EXEDEP_DIRS += \
 
 include $(PKG)/$(MAK)/Makerules
 
 #
-# Library depend rules
+# Executable depend rules
 #
 #$(PKG)/$(BLD)/libsomelib.a:
 #	@(echo Building libsomelib.a ...;\

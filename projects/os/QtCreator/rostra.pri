@@ -13,30 +13,45 @@
 # or otherwise) arising in any way out of the use of this software,
 # even if advised of the possibility of such damage.
 #
-#   File: Makefile
+#   File: rostra.pri
 #
 # Author: $author$
 #   Date: 3/22/2018
 #
-# Os Gcc Makefile for rostra subdurs
+# Os QtCreator .pri file for rostra
 ########################################################################
+UNAME = $$system(uname)
 
-PKG = ../../../..
+contains(UNAME,Darwin) {
+ROSTRA_OS = macosx
+} else {
+ROSTRA_OS = linux
+}
 
-MAK = projects/Makefile/Gcc
-PRJ = projects/os/Makefile/Gcc
-SRC = src
+#CONFIG += c++11
+#CONFIG += c++0x
 
-include $(PKG)/$(MAK)/Makedefines
+########################################################################
+# rostra
 
+# rostra INCLUDEPATH
 #
-# Source subdirs
-#
-#SRC_DIRS = \
-#$(PKG)/$(PRJ)/somedir \
-#
-SRC_DIRS = \
-$(PKG)/$(PRJ)/lib/librostra \
-$(PKG)/$(PRJ)/app/rostra \
+rostra_INCLUDEPATH += \
 
-include $(PKG)/$(MAK)/Makedirs
+# rostra DEFINES
+#
+rostra_DEFINES += \
+
+# rostra LIBS
+#
+rostra_LIBS += \
+$${build_rostra_LIBS} \
+-lpthread \
+-ldl \
+
+contains(ROSTRA_OS,linux) {
+rostra_LIBS += \
+-lrt
+} else {
+}
+
