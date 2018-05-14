@@ -16,7 +16,7 @@
 #   File: rostra.pri
 #
 # Author: $author$
-#   Date: 3/22/2018
+#   Date: 5/6/2018
 #
 # QtCreator .pri file for rostra executable rostra
 ########################################################################
@@ -53,12 +53,22 @@ $${rostra_DEFINES} \
 # rostra_exe HEADERS
 #
 rostra_exe_HEADERS += \
-$${ROSTRA_SRC}/xos/console/Main_main.hpp \
+$${NADIR_SRC}/xos/base/logged.hpp \
+$${NADIR_SRC}/xos/mt/os/os.hpp \
+$${NADIR_SRC}/xos/mt/os/mutex.hpp \
+$${NADIR_SRC}/xos/io/logger.hpp \
+$${NADIR_SRC}/xos/base/main_main.hpp \
+$${ROSTRA_SRC}/xos/app/console/rostra/main.hpp \
 
 # rostra_exe SOURCES
 #
 rostra_exe_SOURCES += \
-$${ROSTRA_SRC}/xos/console/Main_main.cpp \
+$${NADIR_SRC}/xos/base/logged.cpp \
+$${NADIR_SRC}/xos/mt/os/os.cpp \
+$${NADIR_SRC}/xos/mt/os/mutex.cpp \
+$${NADIR_SRC}/xos/io/logger.cpp \
+$${NADIR_SRC}/xos/base/main_main.cpp \
+$${ROSTRA_SRC}/xos/app/console/rostra/main.cpp \
 
 ########################################################################
 # rostra_exe FRAMEWORKS

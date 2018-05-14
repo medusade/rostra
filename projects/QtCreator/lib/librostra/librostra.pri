@@ -16,7 +16,7 @@
 #   File: librostra.pri
 #
 # Author: $author$
-#   Date: 3/22/2018
+#   Date: 5/6/2018
 #
 # QtCreator .pri file for rostra library librostra
 ########################################################################
@@ -56,11 +56,13 @@ $${rostra_DEFINES} \
 #
 librostra_HEADERS += \
 $${ROSTRA_SRC}/xos/platform/platform.hpp \
+$${ROSTRA_SRC}/xos/lib/rostra/version.hpp \
 
 # librostra SOURCES
 #
 librostra_SOURCES += \
 $${ROSTRA_SRC}/xos/platform/platform.cpp \
+$${ROSTRA_SRC}/xos/lib/rostra/version.cpp \
 
 ########################################################################
 

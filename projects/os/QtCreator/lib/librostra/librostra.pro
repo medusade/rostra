@@ -16,7 +16,7 @@
 #   File: librostra.pro
 #
 # Author: $author$
-#   Date: 3/22/2018
+#   Date: 5/6/2018
 #
 # QtCreator .pro file for rostra library librostra
 ########################################################################

@@ -16,7 +16,7 @@
 #   File: rostra.pri
 #
 # Author: $author$
-#   Date: 3/22/2018
+#   Date: 5/6/2018
 #
 # Os QtCreator .pri file for rostra
 ########################################################################
@@ -32,6 +32,28 @@ ROSTRA_OS = linux
 #CONFIG += c++0x
 
 ########################################################################
+# nadir
+NADIR_THIRDPARTY_PKG_MAKE_BLD = $${NADIR_THIRDPARTY_PKG}/build/$${ROSTRA_OS}/$${BUILD_CONFIG}
+NADIR_THIRDPARTY_PRJ_MAKE_BLD = $${NADIR_THIRDPARTY_PRJ}/build/$${ROSTRA_OS}/$${BUILD_CONFIG}
+NADIR_THIRDPARTY_PKG_BLD = $${NADIR_THIRDPARTY_PKG}/build/$${ROSTRA_OS}/QtCreator/$${BUILD_CONFIG}
+NADIR_THIRDPARTY_PRJ_BLD = $${NADIR_THIRDPARTY_PRJ}/build/$${ROSTRA_OS}/QtCreator/$${BUILD_CONFIG}
+NADIR_PKG_BLD = $${OTHER_BLD}/$${NADIR_PKG}/build/$${ROSTRA_OS}/QtCreator/$${BUILD_CONFIG}
+NADIR_PRJ_BLD = $${OTHER_BLD}/$${NADIR_PRJ}/build/$${ROSTRA_OS}/QtCreator/$${BUILD_CONFIG}
+#NADIR_LIB = $${NADIR_THIRDPARTY_PKG_MAKE_BLD}/lib
+#NADIR_LIB = $${NADIR_THIRDPARTY_PRJ_MAKE_BLD}/lib
+#NADIR_LIB = $${NADIR_THIRDPARTY_PKG_BLD}/lib
+#NADIR_LIB = $${NADIR_THIRDPARTY_PRJ_BLD}/lib
+#NADIR_LIB = $${NADIR_PKG_BLD}/lib
+NADIR_LIB = $${NADIR_PRJ_BLD}/lib
+#NADIR_LIB = $${ROSTRA_LIB}
+
+# nadir LIBS
+#
+nadir_LIBS += \
+-L$${NADIR_LIB}/libxos$${NADIR_NAME} \
+-lxos$${NADIR_NAME} \
+
+########################################################################
 # rostra
 
 # rostra INCLUDEPATH
@@ -45,6 +67,7 @@ rostra_DEFINES += \
 # rostra LIBS
 #
 rostra_LIBS += \
+$${nadir_LIBS} \
 $${build_rostra_LIBS} \
 -lpthread \
 -ldl \
