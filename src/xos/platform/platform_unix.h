@@ -152,6 +152,7 @@ int pthread_tryjoin_np(pthread_t thread, void **retval);
 } /*/ extern "C" /*/
 #endif /*/ defined(__cplusplus)  /*/
 #define PTHREAD_HAS_TRYJOIN
+#define DEFINED_PTHREAD_HAS_TRYJOIN
 #else /*/ !defined(PTHREAD_HAS_TRYJOIN) /*/
 #endif /*/ !defined(PTHREAD_HAS_TRYJOIN) /*/
 
@@ -169,6 +170,7 @@ int pthread_timedjoin_np
 } /*/ extern "C" /*/
 #endif /*/ defined(__cplusplus)  /*/
 #define PTHREAD_HAS_TIMEDJOIN
+#define DEFINED_PTHREAD_HAS_TIMEDJOIN
 #else /*/ !defined(PTHREAD_HAS_TIMEDJOIN) /*/
 #endif /*/ !defined(PTHREAD_HAS_TIMEDJOIN) /*/
 #else /*/ !defined(HAS_POSIX_TIMEOUTS) /*/

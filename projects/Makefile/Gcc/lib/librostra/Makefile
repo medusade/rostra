@@ -16,7 +16,7 @@
 #   File: Makefile
 #
 # Author: $author$
-#   Date: 3/22/2018
+#   Date: 10/16/2018
 #
 # generic Gcc Makefile for rostra Library librostra
 ########################################################################
@@ -78,6 +78,7 @@ ${rostra_USRLIBDIRS} \
 #
 librostra_LIB_CPP_SOURCES += \
 ${ROSTRA_SRC}/xos/platform/platform.cpp \
+${ROSTRA_SRC}/xos/lib/rostra/version.cpp \
 
 #
 # Library .m sources

@@ -27,7 +27,13 @@
 #if !defined(va_copy)
 #define va_copy(_target, _source) (_target = _source)
 #endif /*/ !defined(va_copy) /*/
+#if defined(__cplusplus)
+extern "C" {
+#endif /*/ defined(__cplusplus)  /*/
 int vfscanf(FILE* file, const char* format, va_list va);
+#if defined(__cplusplus)
+} /*/ extern "C" /*/
+#endif /*/ defined(__cplusplus)  /*/
 #endif /*/ (_MSC_VER < MSC_VER_14) /*/
 
 #if defined(__cplusplus)

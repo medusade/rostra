@@ -16,7 +16,7 @@
 #   File: Makefile
 #
 # Author: $author$
-#   Date: 3/22/2018
+#   Date: 10/16/2018
 #
 # generic Gcc Makefile for rostra Executable rostra
 ########################################################################
@@ -77,7 +77,7 @@ ${rostra_USRLIBDIRS} \
 # Executable .cpp sources
 #
 rostra_exe_EXE_CPP_SOURCES += \
-${ROSTRA_SRC}/xos/console/Main_main.cpp \
+${ROSTRA_SRC}/xos/app/console/rostra/main.cpp \
 
 #
 # Executable .m sources

@@ -19,6 +19,7 @@
 ///   Date: 9/11/2017
 ///////////////////////////////////////////////////////////////////////
 #include "xos/platform/platform_unix.hpp"
+#include "xos/platform/platform_unix.c"
 
 namespace xos {
 namespace platform {
@@ -35,7 +36,18 @@ int clock_gettime(clockid_t clk_id, struct timespec *res) {
         memset(res, 0, sizeof(struct timespec));
         return 0;
     }
-    return 1;
+    return EINVAL;
+}
+///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+int pthread_tryjoin_np(pthread_t thread, void **retval) {
+    return EINVAL;
+}
+///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+int pthread_timedjoin_np
+(pthread_t thread, void **retval, const struct timespec *abstime) {
+    return EINVAL;
 }
 #else // defined(MACOSX)
 #endif // defined(MACOSX)

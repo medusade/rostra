@@ -16,7 +16,7 @@
 #   File: Makefile
 #
 # Author: $author$
-#   Date: 3/22/2018
+#   Date: 10/16/2018
 #
 # Os Gcc Makefile for rostra Library librostra
 ########################################################################
@@ -26,7 +26,7 @@ PKG = ../../../../../..
 BMK = build/Makefile/Gcc
 MAK = projects/Makefile/Gcc
 PRJ = projects/os/Makefile/Gcc
-SRC = cpp/xos/src
+SRC = src
 
 include $(PKG)/$(BMK)/Makedefines
 include $(PKG)/$(MAK)/Makedefines

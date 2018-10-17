@@ -21,7 +21,7 @@
 #ifndef _XOS_PLATFORM_PLATFORM_UNIX_HPP
 #define _XOS_PLATFORM_PLATFORM_UNIX_HPP
 
-#include "xos/platform/platform.h"
+#include "xos/platform/platform_unix.h"
 
 namespace xos {
 namespace platform {
