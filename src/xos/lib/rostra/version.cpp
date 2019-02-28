@@ -21,7 +21,7 @@
 #include "xos/lib/rostra/version.hpp"
 
 #if !defined(XOS_LIB_ROSTRA_VERSION_NAME)
-#define XOS_LIB_ROSTRA_VERSION_NAME "rostra"
+#define XOS_LIB_ROSTRA_VERSION_NAME "librostra"
 #endif /// !defined(XOS_LIB_ROSTRA_VERSION_NAME)
 
 #if !defined(XOS_LIB_ROSTRA_VERSION_MAJOR)
