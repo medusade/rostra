@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "bin", "bin", "{D0520170-1CEB-4C3A-9A39-B58CF643D420}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{56EAE82C-43AB-485E-B534-259F41A911FE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Properties", "Properties", "{AE7FC20F-03D6-4E2F-8292-ED311E16EDFB}"
+	ProjectSection(SolutionItems) = preProject
+		..\nadir.props = ..\nadir.props
+		..\rostra.props = ..\rostra.props
+		..\vcproj.props = ..\vcproj.props
+		vcversion.props = vcversion.props
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "librostra", "librostra\librostra.vcxproj", "{8B56C1A7-BE32-49BA-A758-CCFD721F6A1A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "rostra", "rostra\rostra.vcxproj", "{24D109BE-B538-4412-ACCF-43245BA7411B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8B56C1A7-BE32-49BA-A758-CCFD721F6A1A} = {8B56C1A7-BE32-49BA-A758-CCFD721F6A1A}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8B56C1A7-BE32-49BA-A758-CCFD721F6A1A}.Debug|x64.ActiveCfg = Debug|x64
+		{8B56C1A7-BE32-49BA-A758-CCFD721F6A1A}.Debug|x64.Build.0 = Debug|x64
+		{8B56C1A7-BE32-49BA-A758-CCFD721F6A1A}.Debug|x86.ActiveCfg = Debug|Win32
+		{8B56C1A7-BE32-49BA-A758-CCFD721F6A1A}.Debug|x86.Build.0 = Debug|Win32
+		{8B56C1A7-BE32-49BA-A758-CCFD721F6A1A}.Release|x64.ActiveCfg = Release|x64
+		{8B56C1A7-BE32-49BA-A758-CCFD721F6A1A}.Release|x64.Build.0 = Release|x64
+		{8B56C1A7-BE32-49BA-A758-CCFD721F6A1A}.Release|x86.ActiveCfg = Release|Win32
+		{8B56C1A7-BE32-49BA-A758-CCFD721F6A1A}.Release|x86.Build.0 = Release|Win32
+		{24D109BE-B538-4412-ACCF-43245BA7411B}.Debug|x64.ActiveCfg = Debug|x64
+		{24D109BE-B538-4412-ACCF-43245BA7411B}.Debug|x64.Build.0 = Debug|x64
+		{24D109BE-B538-4412-ACCF-43245BA7411B}.Debug|x86.ActiveCfg = Debug|Win32
+		{24D109BE-B538-4412-ACCF-43245BA7411B}.Debug|x86.Build.0 = Debug|Win32
+		{24D109BE-B538-4412-ACCF-43245BA7411B}.Release|x64.ActiveCfg = Release|x64
+		{24D109BE-B538-4412-ACCF-43245BA7411B}.Release|x64.Build.0 = Release|x64
+		{24D109BE-B538-4412-ACCF-43245BA7411B}.Release|x86.ActiveCfg = Release|Win32
+		{24D109BE-B538-4412-ACCF-43245BA7411B}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8B56C1A7-BE32-49BA-A758-CCFD721F6A1A} = {56EAE82C-43AB-485E-B534-259F41A911FE}
+		{24D109BE-B538-4412-ACCF-43245BA7411B} = {D0520170-1CEB-4C3A-9A39-B58CF643D420}
+	EndGlobalSection
+EndGlobal
