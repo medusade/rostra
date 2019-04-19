@@ -58,7 +58,9 @@
 extern "C" {
 #endif /*/ defined(__cplusplus)  /*/
 
+#if !defined(clock_gettime)
 int clock_gettime(clockid_t clk_id, struct timespec *res);
+#endif /*/ !defined(clock_gettime) /*/
 
 #if defined(__cplusplus)
 } /*/ extern "C" /*/
