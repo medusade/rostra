@@ -32,17 +32,23 @@ ROSTRA_OS = linux
 }
 }
 
+contains(ROSTRA_OS,linux) {
+ROSTRA_BUILD = os
+} else {
+ROSTRA_BUILD = $${ROSTRA_OS}
+}
+
 #CONFIG += c++11
 #CONFIG += c++0x
 
 ########################################################################
 # nadir
-NADIR_THIRDPARTY_PKG_MAKE_BLD = $${NADIR_THIRDPARTY_PKG}/build/$${ROSTRA_OS}/$${BUILD_CONFIG}
-NADIR_THIRDPARTY_PRJ_MAKE_BLD = $${NADIR_THIRDPARTY_PRJ}/build/$${ROSTRA_OS}/$${BUILD_CONFIG}
-NADIR_THIRDPARTY_PKG_BLD = $${NADIR_THIRDPARTY_PKG}/build/$${ROSTRA_OS}/QtCreator/$${BUILD_CONFIG}
-NADIR_THIRDPARTY_PRJ_BLD = $${NADIR_THIRDPARTY_PRJ}/build/$${ROSTRA_OS}/QtCreator/$${BUILD_CONFIG}
-NADIR_PKG_BLD = $${OTHER_BLD}/$${NADIR_PKG}/build/$${ROSTRA_OS}/QtCreator/$${BUILD_CONFIG}
-NADIR_PRJ_BLD = $${OTHER_BLD}/$${NADIR_PRJ}/build/$${ROSTRA_OS}/QtCreator/$${BUILD_CONFIG}
+NADIR_THIRDPARTY_PKG_MAKE_BLD = $${NADIR_THIRDPARTY_PKG}/build/$${ROSTRA_BUILD}/$${BUILD_CONFIG}
+NADIR_THIRDPARTY_PRJ_MAKE_BLD = $${NADIR_THIRDPARTY_PRJ}/build/$${ROSTRA_BUILD}/$${BUILD_CONFIG}
+NADIR_THIRDPARTY_PKG_BLD = $${NADIR_THIRDPARTY_PKG}/build/$${ROSTRA_BUILD}/QtCreator/$${BUILD_CONFIG}
+NADIR_THIRDPARTY_PRJ_BLD = $${NADIR_THIRDPARTY_PRJ}/build/$${ROSTRA_BUILD}/QtCreator/$${BUILD_CONFIG}
+NADIR_PKG_BLD = $${OTHER_BLD}/$${NADIR_PKG}/build/$${ROSTRA_BUILD}/QtCreator/$${BUILD_CONFIG}
+NADIR_PRJ_BLD = $${OTHER_BLD}/$${NADIR_PRJ}/build/$${ROSTRA_BUILD}/QtCreator/$${BUILD_CONFIG}
 #NADIR_LIB = $${NADIR_THIRDPARTY_PKG_MAKE_BLD}/lib
 #NADIR_LIB = $${NADIR_THIRDPARTY_PRJ_MAKE_BLD}/lib
 #NADIR_LIB = $${NADIR_THIRDPARTY_PKG_BLD}/lib
@@ -54,6 +60,12 @@ NADIR_LIB = $${NADIR_PRJ_BLD}/lib
 # nadir LIBS
 #
 nadir_LIBS += \
+-L$${NADIR_LIB}/lib$${NADIR_NAME} \
+-l$${NADIR_NAME} \
+
+# xosnadir LIBS
+#
+xosnadir_LIBS += \
 -L$${NADIR_LIB}/libxos$${NADIR_NAME} \
 -lxos$${NADIR_NAME} \
 
@@ -71,7 +83,7 @@ rostra_DEFINES += \
 # rostra LIBS
 #
 rostra_LIBS += \
-$${nadir_LIBS} \
+$${xosnadir_LIBS} \
 $${build_rostra_LIBS} \
 
 contains(ROSTRA_OS,macosx|linux) {
@@ -86,4 +98,3 @@ rostra_LIBS += \
 -lrt
 } else {
 }
-

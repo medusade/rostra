@@ -60,15 +60,21 @@ NADIR_SRC = $${NADIR_PRJ}/$${NADIR_SOURCE}
 
 # nadir INCLUDEPATH
 #
-#nadir_INCLUDEPATH += \
-#$${NADIR_HOME_BUILD_INCLUDE} \
-
 nadir_INCLUDEPATH += \
 $${NADIR_SRC} \
 
 # nadir DEFINES
 #
 nadir_DEFINES += \
+
+# xosnadir INCLUDEPATH
+#
+xosnadir_INCLUDEPATH += \
+$${NADIR_SRC} \
+
+# xosnadir DEFINES
+#
+xosnadir_DEFINES += \
 NO_USE_NADIR_BASE \
 NO_USE_XOS_LOGGER_INTERFACE \
 
@@ -99,13 +105,13 @@ rostra_DEFINES += RELEASE_BUILD
 #
 rostra_INCLUDEPATH += \
 $${ROSTRA_SRC} \
-$${nadir_INCLUDEPATH} \
+$${xosnadir_INCLUDEPATH} \
 $${build_rostra_INCLUDEPATH} \
 
 # rostra DEFINES
 #
 rostra_DEFINES += \
-$${nadir_DEFINES} \
+$${xosnadir_DEFINES} \
 $${build_rostra_DEFINES} \
 
 # rostra LIBS
@@ -113,5 +119,3 @@ $${build_rostra_DEFINES} \
 rostra_LIBS += \
 -L$${ROSTRA_LIB}/lib$${FRAMEWORK_NAME} \
 -l$${FRAMEWORK_NAME} \
-
-
