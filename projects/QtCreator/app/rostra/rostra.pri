@@ -16,7 +16,7 @@
 #   File: rostra.pri
 #
 # Author: $author$
-#   Date: 5/6/2018
+#   Date: 5/6/2018, 12/26/2020
 #
 # QtCreator .pri file for rostra executable rostra
 ########################################################################
@@ -37,6 +37,7 @@ $${rostra_INCLUDEPATH} \
 #
 rostra_exe_DEFINES += \
 $${rostra_DEFINES} \
+XOS_DEFAULT_LOG_ERROR \
 
 ########################################################################
 # rostra_exe OBJECTIVE_HEADERS

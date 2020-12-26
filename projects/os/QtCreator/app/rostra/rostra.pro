@@ -16,10 +16,11 @@
 #   File: rostra.pro
 #
 # Author: $author$
-#   Date: 5/6/2018
+#   Date: 5/6/2018, 12/26/2020
 #
 # QtCreator .pro file for rostra executable rostra
 ########################################################################
+include(../../../../../../build/QtCreator/rostra.pri)
 include(../../../../../build/QtCreator/rostra.pri)
 include(../../../../QtCreator/rostra.pri)
 include(../../rostra.pri)
@@ -54,12 +55,12 @@ $${rostra_exe_OBJECTIVE_SOURCES} \
 #
 HEADERS += \
 $${rostra_exe_HEADERS} \
+$${rostra_exe_OBJECTIVE_HEADERS} \
 
 # SOURCES
 #
 SOURCES += \
 $${rostra_exe_SOURCES} \
-$${OBJECTIVE_SOURCES} \
 
 ########################################################################
 # FRAMEWORKS

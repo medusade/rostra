@@ -16,30 +16,47 @@
 #   File: rostra.pri
 #
 # Author: $author$
-#   Date: 5/6/2018
+#   Date: 5/6/2018, 12/26/2020
 #
-# Os QtCreator .pri file for rostra
+# Os specific QtCreator .pri file for rostra
 ########################################################################
 UNAME = $$system(uname)
 
-contains(UNAME,Windows) {
-ROSTRA_OS = windows
-} else {
 contains(UNAME,Darwin) {
 ROSTRA_OS = macosx
 } else {
+contains(UNAME,Linux) {
 ROSTRA_OS = linux
-}
-}
-
-contains(ROSTRA_OS,linux) {
-ROSTRA_BUILD = os
 } else {
-ROSTRA_BUILD = $${ROSTRA_OS}
-}
+ROSTRA_OS = windows
+} # contains(UNAME,Linux)
+} # contains(UNAME,Darwin)
 
-#CONFIG += c++11
-#CONFIG += c++0x
+contains(BUILD_OS,ROSTRA_OS) {
+ROSTRA_BUILD = $${ROSTRA_OS}
+} else {
+ROSTRA_BUILD = $${BUILD_OS}
+} # contains(BUILD_OS,ROSTRA_OS)
+
+contains(BUILD_CPP_VERSION,10) {
+CONFIG += c++0x
+} else {
+contains(BUILD_CPP_VERSION,98|03|11|14|17) {
+CONFIG += c++$${BUILD_CPP_VERSION}
+} else {
+} # contains(BUILD_CPP_VERSION,98|03|11|14|17)
+} # contains(BUILD_CPP_VERSION,10)
+
+contains(ROSTRA_OS,macosx) {
+} else {
+contains(ROSTRA_OS,linux) {
+QMAKE_CXXFLAGS += -fpermissive
+} else {
+contains(ROSTRA_OS,windows) {
+} else {
+} # contains(ROSTRA_OS,windows)
+} # contains(ROSTRA_OS,linux)
+} # contains(ROSTRA_OS,macosx)
 
 ########################################################################
 # nadir

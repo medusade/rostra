@@ -16,7 +16,7 @@
 #   File: librostra.pri
 #
 # Author: $author$
-#   Date: 5/6/2018
+#   Date: 5/6/2018, 12/26/2020
 #
 # QtCreator .pri file for rostra library librostra
 ########################################################################
@@ -39,6 +39,7 @@ $${rostra_INCLUDEPATH} \
 #
 librostra_DEFINES += \
 $${rostra_DEFINES} \
+XOS_DEFAULT_LOG_ERROR \
 
 ########################################################################
 # librostra OBJECTIVE_HEADERS
