@@ -118,6 +118,8 @@ int semop(int semid, struct sembuf *sops, size_t nsops);
 /*/////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////*/
 #else /*/ (__MAC_OS_X_VERSION_MAX_ALLOWED <= __MAC_OS_X_VERSION_MAX_ALLOWED_NO_POSIX_SEM) /*/
+#include <semaphore.h>
+#include <errno.h>
 #endif /*/ (__MAC_OS_X_VERSION_MAX_ALLOWED <= __MAC_OS_X_VERSION_MAX_ALLOWED_NO_POSIX_SEM) /*/
 #else /*/ defined(MACOSX) /*/
 #endif /*/ defined(MACOSX) /*/
