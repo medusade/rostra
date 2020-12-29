@@ -1,2 +1,2 @@
 # rostra
-Rostra cross-platform and framework mapping library
+Rostra C++ cross-platform and framework mapping library
