@@ -17,7 +17,7 @@
 ///   File: platform_defines.h
 ///
 /// Author: $author$
-///   Date: 7/23/2017
+///   Date: 7/23/2017, 6/13/2021
 ///////////////////////////////////////////////////////////////////////
 /*/
 #ifndef _XOS_PLATFORM_PLATFORM_DEFINES_H
@@ -188,6 +188,14 @@
 #define PLATFORM_DELETE DELETE
 #undef DELETE
 #endif /*/ defined(DELETE) /*/
+
+#if !defined(imported)
+#define imported PLATFORM_IMPORT
+#endif /*/ !defined(imported) /*/
+
+#if !defined(exported)
+#define exported PLATFORM_EXPORT
+#endif /*/ !defined(exported) /*/
 /*/
 // ...
 // Generic

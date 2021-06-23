@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////
-/// Copyright (c) 1988-2017 $organization$
+/// Copyright (c) 1988-2021 $organization$
 ///
 /// This software is provided by the author and contributors ``as is'' 
 /// and any express or implied warranties, including, but not limited to, 
@@ -13,25 +13,18 @@
 /// or otherwise) arising in any way out of the use of this software, 
 /// even if advised of the possibility of such damage.
 ///
-///   File: platform_windows.cpp
+///   File: configure.hpp
 ///
 /// Author: $author$
-///   Date: 9/11/2017, 6/13/2021
+///   Date: 6/13/2021
 ///////////////////////////////////////////////////////////////////////
-#include "xos/platform/platform_windows.hpp"
-#include "xos/platform/platform_windows.c"
+#ifndef XOS_PLATFORM_CONFIGURE_HPP
+#define XOS_PLATFORM_CONFIGURE_HPP
+
+#include "xos/platform/platform.hpp"
 
 namespace xos {
-namespace platform {
 
-} // namespace platform 
-} // namespace xos 
+} /// namespace xos
 
-#if (_MSC_VER < MSC_VER_14)
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
-int vfscanf(FILE* file, const char* format, va_list va) {
-    int count = 0;
-    return count;
-}
-#endif // (_MSC_VER < MSC_VER_14)
+#endif /// XOS_PLATFORM_CONFIGURE_HPP
